@@ -1,5 +1,11 @@
 FROM quay.io/operator-framework/ansible-operator:v1.12.0
 
+USER 0
+
+RUN dnf install -y openssl
+
+USER 1001
+
 ARG DEFAULT_AWX_VERSION
 ARG OPERATOR_VERSION
 ENV DEFAULT_AWX_VERSION=${DEFAULT_AWX_VERSION}
@@ -12,3 +18,4 @@ RUN ansible-galaxy collection install -r ${HOME}/requirements.yml \
 COPY watches.yaml ${HOME}/watches.yaml
 COPY roles/ ${HOME}/roles/
 COPY playbooks/ ${HOME}/playbooks/
+
