@@ -262,6 +262,10 @@ spec:
               mountPath: "/var/lib/awx/rsyslog"
             - name: "{{ ansible_operator_meta.name }}-receptor-config"
               mountPath: "/etc/receptor/"
+            - name: "{{ ansible_operator_meta.name }}-receptor-work-signing"
+              mountPath: "/etc/receptor/signing/work-private-key.pem"
+              subPath: "work-private-key.pem"
+              readOnly: true
             - name: receptor-socket
               mountPath: "/var/run/receptor"
             - name: "{{ ansible_operator_meta.name }}-projects"
