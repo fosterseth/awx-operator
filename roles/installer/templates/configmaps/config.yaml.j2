@@ -237,6 +237,11 @@ data:
     ---
     - log-level: debug
     - local-only: null
+    - node:
+       firewallrules:
+        - action: reject
+          tonode: HOSTNAME
+          toservice: control
     - control-service:
         service: control
         filename: /var/run/receptor/receptor.sock
